@@ -1,19 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-interface IProduct {
-  name: string;
-  qty: number;
-  rate: number;
-  total: number;
-  gst: number;
-}
-
-interface IInvoice extends Document {
-  user: mongoose.Types.ObjectId;
-  products: IProduct[];
-  date: Date;
-}
-
 const productSchema: Schema = new Schema({
   name: {
     type: String,
@@ -68,7 +54,7 @@ const invoiceSchema = new mongoose.Schema({
   timestamps: true
 });
 
-const Invoice = mongoose.model<IInvoice>('Invoice', invoiceSchema);
+const Invoice = mongoose.model('Invoice', invoiceSchema);
 
 export default Invoice;
 
