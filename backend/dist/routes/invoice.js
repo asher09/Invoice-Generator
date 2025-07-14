@@ -1,6 +1,9 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.invoiceRouter = void 0;
-const express = require('express');
-exports.invoiceRouter = express.Router();
-exports.invoiceRouter.get();
+// import express from 'express';
+// import { generateInvoice, getInvoices } from '../controllers/invoiceController';
+// import { authenticateToken } from '../middleware/auth';
+// const router = express.Router();
+// router.post('/generate', authenticateToken, generateInvoice);
+// router.get('/all', authenticateToken, getInvoices);
+// export default router;
+// export const invoiceRouter = router;

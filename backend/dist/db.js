@@ -12,13 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.connectToDatabase = connectToDatabase;
+exports.connectDB = connectDB;
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const mongoose_1 = __importDefault(require("mongoose"));
-function connectToDatabase() {
+function connectDB() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const DATABASE_URL = process.env.DATABASE_URL || 'mongodb://localhost:27017/invoice-generator';
-            yield mongoose_1.default.connect(DATABASE_URL);
+            const DATABASE_URL = process.env.DATABASE_URL;
+            mongoose_1.default.connect(DATABASE_URL);
             console.log('Connected to MongoDB successfully');
         }
         catch (error) {
@@ -27,4 +29,4 @@ function connectToDatabase() {
         }
     });
 }
-connectToDatabase();
+connectDB();

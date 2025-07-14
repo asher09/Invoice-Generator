@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import User from '../models/User';
+import User from '../models/user';
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import {z} from 'zod'
@@ -8,9 +8,8 @@ import {z} from 'zod'
 const express = require('express');
 export const userRouter = express.Router();
 
-
 const signupInput = z.object({
-  email: z.string().email() ,
+  email: z.string().email(),
   password: z.string().min(8),
   name: z.string()
 })

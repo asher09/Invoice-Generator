@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userRouter = void 0;
-const User_1 = __importDefault(require("../models/User"));
+const user_1 = __importDefault(require("../models/user"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const zod_1 = require("zod");
@@ -30,12 +30,14 @@ const signinInput = zod_1.z.object({
 });
 exports.userRouter.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
+    console.log("receivedBody", body);
+    console.log("zod result", signupInput.safeParse(body));
     const { success } = signupInput.safeParse(body);
     if (!success) {
         return res.status(411).json({ message: "Inputs not correct" });
     }
     const hashedPassword = yield bcryptjs_1.default.hash(body.password, 12);
-    const user = yield User_1.default.create({
+    const user = yield user_1.default.create({
         name: body.name,
         email: body.email,
         password: hashedPassword
@@ -51,7 +53,7 @@ exports.userRouter.post('/signin', (req, res) => __awaiter(void 0, void 0, void 
     if (!success) {
         return res.status(411).json({ message: "Inputs not correct" });
     }
-    const user = yield User_1.default.findOne({
+    const user = yield user_1.default.findOne({
         email: body.email
     });
     if (!user) {

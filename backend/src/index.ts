@@ -1,13 +1,24 @@
-
-import "./db"; 
+import express from 'express';
 import { userRouter } from "./routes/user";        
-import { invoiceRouter } from "./routes/invoice";     
-import dotenv from "dotenv";
+// import { invoiceRouter } from "./routes/invoice";     
+import "./db";
 
-dotenv.config()
-const app = require('express');
+import dotenv from "dotenv";
+dotenv.config();
+process.env.DEBUG = '';
+
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+const PORT = process.env.PORT
  
-app.route('/api/user',  userRouter);
-// app.route('/api/invoice', invoiceRouter);
+app.use('/api/user',  userRouter);
+// app.use('/api/invoice', invoiceRouter);
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port http://localhost:${PORT}`)
+})
 
 export default app;

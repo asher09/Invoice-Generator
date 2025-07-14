@@ -1,60 +1,37 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-const productSchema: Schema = new Schema({
+const ProductSchema = new mongoose.Schema({
   name: {
-    type: String,
-    required: [true, 'Product name is required'],
-    trim: true
+    type: String, 
+    required: true 
+  }, 
+  qty: { 
+    type: Number, 
+    required: true 
   },
-  qty: {
-    type: Number,
-    required: [true, 'Quantity is required'],
-    min: [1, 'Quantity must be at least 1']
+  rate: { 
+    type: Number, 
+    required: true 
   },
-  rate: {
-    type: Number,
-    required: [true, 'Rate is required'],
-    min: 0
+  total: { 
+    type: Number, 
+    required: true 
   },
-  total: {
-    type: Number,
-    required: [true, 'Total is required'],
-    min: 0
+  gst: { 
+    type: Number, 
+    required: true 
   },
-  gst: {
-    type: Number,
-    required: [true, 'GST is required'],
-    min: 0
-  }
-}, { _id: false }); 
+});
+
+const InvoiceSchema = new mongoose.Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref:'User',
+    required: true
+  },
+  products: [ProductSchema]
+})
 
 
-
-// const invoiceSchema = new mongoose.Schema({
-//   user: {
-//     type: Schema.Types.ObjectId,
-//     ref: 'User',
-//     required: [true, 'User reference is required']
-//   },
-//   products: {
-//     type: [productSchema],
-//     required: [true, 'Products array is required'],
-//     validate: {
-//       validator: function(products: IProduct[]) {
-//         return products && products.length > 0;
-//       },
-//       message: 'At least one product is required'
-//     }
-//   },
-//   date: {
-//     type: Date,
-//     default: Date.now
-//   }
-// }, {
-//   timestamps: true
-// });
-
-// const Invoice = mongoose.model('Invoice', invoiceSchema);
-
-// export default Invoice;
-
+const Invoice = mongoose.model('Invoice' , InvoiceSchema);
+export default Invoice;
