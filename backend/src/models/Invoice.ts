@@ -30,31 +30,31 @@ const productSchema: Schema = new Schema({
 
 
 
-const invoiceSchema = new mongoose.Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: [true, 'User reference is required']
-  },
-  products: {
-    type: [productSchema],
-    required: [true, 'Products array is required'],
-    validate: {
-      validator: function(products: IProduct[]) {
-        return products && products.length > 0;
-      },
-      message: 'At least one product is required'
-    }
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
-}, {
-  timestamps: true
-});
+// const invoiceSchema = new mongoose.Schema({
+//   user: {
+//     type: Schema.Types.ObjectId,
+//     ref: 'User',
+//     required: [true, 'User reference is required']
+//   },
+//   products: {
+//     type: [productSchema],
+//     required: [true, 'Products array is required'],
+//     validate: {
+//       validator: function(products: IProduct[]) {
+//         return products && products.length > 0;
+//       },
+//       message: 'At least one product is required'
+//     }
+//   },
+//   date: {
+//     type: Date,
+//     default: Date.now
+//   }
+// }, {
+//   timestamps: true
+// });
 
-const Invoice = mongoose.model('Invoice', invoiceSchema);
+// const Invoice = mongoose.model('Invoice', invoiceSchema);
 
-export default Invoice;
+// export default Invoice;
 
