@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const user_1 = require("./routes/user");
-// import { invoiceRouter } from "./routes/invoice";     
+const invoice_1 = require("./routes/invoice");
 require("./db");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
@@ -15,7 +15,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 const PORT = process.env.PORT;
 app.use('/api/user', user_1.userRouter);
-// app.use('/api/invoice', invoiceRouter);
+app.use('/api/invoice', invoice_1.invoiceRouter);
 app.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}`);
 });

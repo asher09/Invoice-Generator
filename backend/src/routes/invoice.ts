@@ -1,12 +1,12 @@
-// import express from 'express';
-// import { generateInvoice, getInvoices } from '../controllers/invoiceController';
-// import { authenticateToken } from '../middleware/auth';
+import express from 'express';
+import { generateInvoice, getInvoices } from '../controllers/invoiceController';
+import { authenticateToken } from '../middleware/auth';
 
-// const router = express.Router();
+const router = express.Router();
 
-// router.post('/generate', authenticateToken, generateInvoice);
+router.post('/generate', authenticateToken, generateInvoice);
 
-// router.get('/all', authenticateToken, getInvoices);
+router.get('/all', authenticateToken, getInvoices);
 
-// export default router;
-// export const invoiceRouter = router;
+export default router;
+export const invoiceRouter = router;

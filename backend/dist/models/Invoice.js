@@ -62,7 +62,21 @@ const InvoiceSchema = new mongoose_1.default.Schema({
         ref: 'User',
         required: true
     },
-    products: [ProductSchema]
+    products: {
+        type: [ProductSchema],
+        required: true,
+        validate: {
+            validator: function (products) {
+                return products && products.length > 0;
+            }
+        }
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
+}, {
+    timestamps: true
 });
 const Invoice = mongoose_1.default.model('Invoice', InvoiceSchema);
 exports.default = Invoice;

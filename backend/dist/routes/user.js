@@ -30,8 +30,6 @@ const signinInput = zod_1.z.object({
 });
 exports.userRouter.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
-    console.log("receivedBody", body);
-    console.log("zod result", signupInput.safeParse(body));
     const { success } = signupInput.safeParse(body);
     if (!success) {
         return res.status(411).json({ message: "Inputs not correct" });

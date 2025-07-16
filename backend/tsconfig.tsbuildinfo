@@ -1,1 +1,1 @@
-{"root":["./src/db.ts","./src/index.ts","./src/controller/auth.ts","./src/models/invoice.ts","./src/models/user.ts","./src/routes/invoice.ts","./src/routes/user.ts"],"version":"5.8.3"}
+{"root":["./src/db.ts","./src/index.ts","./src/controllers/invoicecontroller.ts","./src/middleware/auth.ts","./src/models/invoice.ts","./src/models/user.ts","./src/routes/invoice.ts","./src/routes/user.ts"],"version":"5.8.3"}

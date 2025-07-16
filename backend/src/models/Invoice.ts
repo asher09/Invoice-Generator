@@ -29,8 +29,22 @@ const InvoiceSchema = new mongoose.Schema({
     ref:'User',
     required: true
   },
-  products: [ProductSchema]
-})
+  products: {
+    type: [ProductSchema],
+    required: true,
+    validate: {
+      validator: function(products: any[]) {
+        return products && products.length > 0;
+      }
+    }
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  } 
+},{
+  timestamps: true
+});
 
 
 const Invoice = mongoose.model('Invoice' , InvoiceSchema);
