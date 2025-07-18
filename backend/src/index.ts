@@ -2,6 +2,7 @@ import express from 'express';
 import { userRouter } from "./routes/user";        
 import { invoiceRouter } from "./routes/invoice";     
 import "./db";
+const cors = require('cors')
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -10,6 +11,7 @@ process.env.DEBUG = '';
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 
 
 const PORT = process.env.PORT

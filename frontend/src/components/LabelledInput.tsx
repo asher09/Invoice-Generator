@@ -3,10 +3,11 @@ type LabelledInputProps = {
   placeholder: string;
   subtitle: string;
   type?: string;
+  value: string | number;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-export function LabelledInput({ label, placeholder, subtitle, type, onChange }: LabelledInputProps) {
+export function LabelledInput({ label, placeholder, subtitle, value, type, onChange }: LabelledInputProps) {
   return (
     <div className="mb-5">
       <span className="block text-white font-poppins font-medium text-[16px] mb-1">{label}</span>
@@ -14,6 +15,7 @@ export function LabelledInput({ label, placeholder, subtitle, type, onChange }: 
         type={type || "text"}
         placeholder={placeholder}
         onChange={onChange}
+        value={value}
         className="w-full bg-[#202020] border border-[#424647] rounded-[4px] h-[44px] px-4 py-7 text-[#707070] font-poppins text-[14px] focus:outline-none mb-1"
         required
       />
