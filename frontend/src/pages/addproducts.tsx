@@ -134,7 +134,7 @@ export function AddProducts() {
                                     <td className="px-4 py-2 text-[14px] font-normal">{p.name}</td>
                                     <td className="px-4 py-2 text-[14px] font-normal ">{p.price}</td>
                                     <td className="px-4 py-2 text-[14px] font-normal ">{p.qty}</td>
-                                    <td className="px-4 py-2 text-[14px] font-normal ">INR {p.price * p.qty}</td>
+                                    <td className="px-4 py-2 text-[14px] font-normal ">INR {Number(p.price) * Number(p.qty)}</td>
                                 </tr>  
                                 ))}
                                 <tr className="border border-[#3f3f3f]" >
