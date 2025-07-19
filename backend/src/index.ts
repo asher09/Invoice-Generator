@@ -16,16 +16,27 @@ app.use(cors({
     ?['https://levitation-invgen.vercel.app']
     : ['http://localhost:5173'],
     credentials: true
-}))
-
-
-const PORT = 3000
- 
+})) 
 app.use('/api/user',  userRouter);
 app.use('/api/invoice', invoiceRouter);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}`)
-})
+app.get('/', (req, res) => {
+    res.json({ message: "Invoice Generator API is running!" });
+});
+
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port http://localhost:${PORT}`)
+// })
+app.use((err: any, req: any, res: any, next: any) => {
+    console.error('Error:', err);
+    res.status(500).json({ message: "Something went wrong!" });
+});
+
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server is running on port http://localhost:${PORT}`)
+    });
+}
 
 export default app;
