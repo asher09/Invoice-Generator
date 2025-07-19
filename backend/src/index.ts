@@ -2,15 +2,19 @@ import express from 'express';
 import { userRouter } from "./routes/user";        
 import { invoiceRouter } from "./routes/invoice";     
 import "./db";
-const cors = require('cors')
 import dotenv from "dotenv";
 
 dotenv.config();
-
+import cors from 'cors';
 const app = express();
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors()) 
+app.use(cors({
+    origin: true,
+    credentials: true
+})) ;
 
 app.use('/api/user',  userRouter);
 app.use('/api/invoice', invoiceRouter);
