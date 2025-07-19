@@ -1,1 +1,1 @@
-export const BACKEND_URL="https://invoice-generator-backend-1tkhns2av-ashers-projects-a493213f.vercel.app"
+export const BACKEND_URL="https://invoice-generator-backend.vercel.app"

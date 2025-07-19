@@ -11,10 +11,15 @@ process.env.DEBUG = '';
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors())
+app.use(cors({
+    origin: process.env.NODE_ENV === 'production'
+    ?['https://levitation-invgen.vercel.app']
+    : ['http://localhost:5173'],
+    credentials: true
+}))
 
 
-const PORT = process.env.PORT
+const PORT = 3000
  
 app.use('/api/user',  userRouter);
 app.use('/api/invoice', invoiceRouter);
