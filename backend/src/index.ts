@@ -15,9 +15,6 @@ app.use(cors({
     credentials: true
 })) ;
 
-console.log(`Database URL: ${process.env.DATABASE_URL}`);
-console.log(`JWT Secret: ${process.env.JWT_SECRET}`);
-
 app.use('/api/user',  userRouter);
 app.use('/api/invoice', invoiceRouter);
 
