@@ -3,6 +3,7 @@ import User from '../models/user';
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import {z} from 'zod'
+import {connectDB} from  '../db'
 
 
 const express = require('express');
@@ -20,6 +21,7 @@ const signinInput = z.object({
 })
 
 userRouter.post('/signup', async (req: Request, res: Response) => {
+  await connectDB();
   const body = req.body;
   const {success} = signupInput.safeParse(body);
   if(!success) {
@@ -43,6 +45,7 @@ userRouter.post('/signup', async (req: Request, res: Response) => {
 
 
 userRouter.post('/signin', async (req: Request, res: Response) => {
+  await connectDB();
   const body = req.body;
   const {success} = signinInput.safeParse(body);
   if(!success) {

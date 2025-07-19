@@ -3,16 +3,15 @@ dotenv.config();
 
 import mongoose from "mongoose";
 
+let isConnected = false;
 
 export async function connectDB() {
-  try {
+
+    if(isConnected) return;
     const DATABASE_URL = process.env.DATABASE_URL;
-    mongoose.connect(DATABASE_URL!);
-    console.log('Connected to MongoDB successfully');
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-    throw error;
+    if(!DATABASE_URL) throw new Error('DATABASE_URL not set')
+    await mongoose.connect(DATABASE_URL!);
+    isConnected = true;
+
   }
-}
-connectDB()
 
