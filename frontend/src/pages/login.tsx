@@ -42,72 +42,72 @@ export function Login() {
             navigate('/addproducts');
         } catch (error) {
             console.error('Error during registration:', error);
-            // alert('Registration failed. Please try again.');
         }
-        
     }
+    
     const navButton = () => {
-            navigate('/')
-        }
+        navigate('/')
+    }
 
     return (
-        <div className="bg-[#141414] relative min-h-screen min-w-screen  overflow-x-hidden overflow-hidden">
+        <div className="bg-[#141414] relative min-h-screen overflow-x-hidden">
             <Navbar type={"Register"} onButtonClick={navButton} />
             <div className="absolute left-2/5 top-1/4 transform -translate-y-1/2 w-[350px] h-[350px] bg-[#90E163] opacity-30 blur-[120px] z-0"></div>
             <div className="absolute -left-1/10 -bottom-1/4 transform -translate-y-1/2  w-[350px] h-[350px] bg-[#90E163] opacity-43 blur-[120px] z-0"></div>
             <div className="absolute -right-1/12 top-1/3 transform -translate-y-1/2 w-[350px] h-[350px] bg-[#4F59A8] opacity-45 blur-[120px] z-0"></div>
 
-                <div className="flex justify-center items-center min-h-screen w-screen ">
-                    <div className="flex flex-row justify-between w-screen h-full from-[#141414] via-[#222c18] to-[#2c2c2c] overflow-hidden ">
-                        <div className="w-1/2 h-[100%] flex items-center justify-center">
-                            <div className="relative w-[700px] h-[800px] overflow-hidden rounded-[30px]">                   
-                                <div className="flex transition-transform duration-700 h-full flex-center" 
-                                    style={{transform: `translateX(-${images * 560}px)`, 
-                                }}
-                                > 
-                                    {imagesArr.map((img, idx) => (
-                                        <img key={idx}
-                                            src={img}
-                                            alt={`Slide ${idx + 1}`}
-                                            className="w-[550px] px-2.5 h[740px] object-cover rounded-[40px] last:mr-0"
-                                        />
-                                        ))}
-
-                                </div>
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="flex flex-col md:flex-row justify-between w-full h-full from-[#141414] via-[#222c18] to-[#2c2c2c] overflow-hidden">
+                    {/* Hide image carousel on mobile, show on medium screens and up */}
+                    <div className="hidden md:flex md:w-1/2 h-full items-center justify-center">
+                        <div className="relative w-[400px] lg:w-[700px] h-[600px] lg:h-[800px] overflow-hidden rounded-[30px]">                   
+                            <div className="flex transition-transform duration-700 h-full flex-center" 
+                                style={{transform: `translateX(-${images * (window.innerWidth > 1024 ? 560 : 320)}px)`}}
+                            > 
+                                {imagesArr.map((img, idx) => (
+                                    <img key={idx}
+                                        src={img}
+                                        alt={`Slide ${idx + 1}`}
+                                        className="w-[300px] lg:w-[550px] px-2.5 h-[580px] lg:h-[740px] object-cover rounded-[40px] last:mr-0"
+                                    />
+                                ))}
                             </div>
-                        </div>
-                        <div className="w-1/2 flex flex-col pr-55 pl-10 py-12 ">
-                            <div className="flex gap-3 mb-6" >
-                                <Logo />
-                            </div>
-                            <HeadingSection
-                                title="Let the Journey Begin!"
-                                subtitle="This is basic login page which is used for levitation assignment purpose."
-                            />
-                            <LabelledInput
-                                label="Email Address"
-                                placeholder="Enter Email ID"
-                                subtitle="This email will be displayed with your inquiry"
-                                value={email}
-                                onChange={(e) => {setEmail(e.target.value)}}
-                            />
-                            <LabelledInput
-                                label=" Current Password"
-                                placeholder="Enter the Password"
-                                subtitle=""
-                                type="password"
-                                value={password}
-                                onChange={(e) => {setPassword(e.target.value)}}
-                            />
-                            <ButtonWithLink
-                                buttonText="Login"
-                                linkText="Dont have an account?"
-                                linkHref="/"
-                                onButtonClick={sendRequest}
-                            />
                         </div>
                     </div>
+                    
+                    {/* Form section - full width on mobile, half on desktop */}
+                    <div className="w-full md:w-1/2 flex flex-col px-4 sm:px-8 md:px-10 lg:pr-16 py-8 md:py-12">
+                        <div className="flex gap-3 mb-6">
+                            <Logo />
+                        </div>
+                        <HeadingSection
+                            title="Let the Journey Begin!"
+                            subtitle="This is basic login page which is used for levitation assignment purpose."
+                        />
+                        <LabelledInput
+                            label="Email Address"
+                            placeholder="Enter Email ID"
+                            subtitle="This email will be displayed with your inquiry"
+                            value={email}
+                            onChange={(e) => {setEmail(e.target.value)}}
+                        />
+                        <LabelledInput
+                            label="Current Password"
+                            placeholder="Enter the Password"
+                            subtitle=""
+                            type="password"
+                            value={password}
+                            onChange={(e) => {setPassword(e.target.value)}}
+                        />
+                        <ButtonWithLink
+                            buttonText="Login"
+                            linkText="Dont have an account?"
+                            linkHref="/"
+                            onButtonClick={sendRequest}
+                        />
+                    </div>
                 </div>
+            </div>
         </div>
     )
 }

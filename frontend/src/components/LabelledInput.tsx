@@ -16,7 +16,7 @@ export function LabelledInput({ label, placeholder, subtitle, value, type, onCha
         placeholder={placeholder}
         onChange={onChange}
         value={value}
-        className="w-full bg-[#202020] border border-[#424647] rounded-[4px] h-[44px] px-4 py-7 text-[#707070] font-poppins text-[14px] focus:outline-none mb-1"
+        className="w-full text-white bg-[#202020] border border-[#424647] rounded-[4px] h-[44px] px-4 py-7 font-poppins text-[14px] focus:outline-none mb-1"
         required
       />
       <span className="text-[#B8B8B8] font-poppins text-[14px]">{subtitle}</span>
