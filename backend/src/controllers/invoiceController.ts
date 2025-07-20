@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
-import Invoice from '../models/invoice.ts';
-import User from '../models/user.ts';
+import Invoice from '../models/invoice';
+import User from '../models/user';
 import { z } from 'zod';
 import puppeteer from 'puppeteer';
 
@@ -85,7 +85,7 @@ export const getInvoices = async (req: AuthRequest, res: Response) => {
       .populate('user', 'name email')
       .sort({ createdAt: -1 }); 
 
-    const invoicesWithTotals = invoices.map(invoice => {
+    const invoicesWithTotals = invoices.map((invoice: any) => {
       const subtotal = invoice.products.reduce((sum:number , product: {qty: number; rate: number}) => sum + (product.qty * product.rate), 0);
       const totalGst = invoice.products.reduce((sum: number, product: {
         gst: number } ) => sum + product.gst, 0);
