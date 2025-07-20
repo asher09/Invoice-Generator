@@ -1,7 +1,7 @@
 import express from 'express';
 import { userRouter } from "./routes/user";        
 import { invoiceRouter } from "./routes/invoice";     
-import './db.js'
+import './db'
 import dotenv from "dotenv";
 
 dotenv.config();

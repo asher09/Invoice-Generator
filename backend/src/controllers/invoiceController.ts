@@ -1,8 +1,8 @@
 import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
 
- const { Invoice } = require('../models/invoice.ts');
- const { User } = require('../models/user.ts');
+ const { Invoice } = require('../models/invoice');
+ const { User } = require('../models/user');
 
 import { z } from 'zod';
 import puppeteer from 'puppeteer';
