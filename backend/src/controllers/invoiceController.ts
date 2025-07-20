@@ -86,7 +86,7 @@ export const getInvoices = async (req: AuthRequest, res: Response) => {
       .sort({ createdAt: -1 }); 
 
     const invoicesWithTotals = invoices.map(invoice => {
-      const subtotal = invoice.products.reduce((sum, product) => sum + (product.qty * product.rate), 0);
+      const subtotal = invoice.products.reduce((sum:any , product: any) => sum + (product.qty * product.rate), 0);
       const totalGst = invoice.products.reduce((sum, product) => sum + product.gst, 0);
       const grandTotal = subtotal + totalGst;
 
