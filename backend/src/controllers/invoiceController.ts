@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
-import Invoice from '../models/invoice';
-import User from '../models/user';
+import Invoice from '../models/invoice.ts';
+import User from '../models/user.ts';
 import { z } from 'zod';
 import puppeteer from 'puppeteer';
 
