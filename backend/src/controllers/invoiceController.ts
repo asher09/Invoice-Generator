@@ -1,7 +1,9 @@
 import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
-import Invoice from '../models/invoice';
-import User from '../models/user';
+
+const {Invoice} = require('../models/invoice');
+const {User} =require('../models/user');
+
 import { z } from 'zod';
 import puppeteer from 'puppeteer';
 

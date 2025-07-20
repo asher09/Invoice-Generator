@@ -1,10 +1,10 @@
 import {Request, Response} from 'express';
-import User from '../models/user';
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import {z} from 'zod'
 import {connectDB} from  '../db'
 
+const {User} =require('../models/user');
 
 const express = require('express');
 export const userRouter = express.Router();
