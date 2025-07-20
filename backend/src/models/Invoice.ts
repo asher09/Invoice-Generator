@@ -47,6 +47,7 @@ const InvoiceSchema = new mongoose.Schema({
 });
 
 
-export const Invoice = mongoose.model('Invoice' , InvoiceSchema);
+const Invoice = mongoose.model('Invoice' , InvoiceSchema);
 
+module.exports = { Invoice }
 
