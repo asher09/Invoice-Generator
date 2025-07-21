@@ -1,1 +1,1 @@
-export const BACKEND_URL="https://invoice-generator-backend.vercel.app"
+export const BACKEND_URL="https://levitation-be.vercel.app/"

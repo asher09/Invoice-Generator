@@ -184,7 +184,7 @@ export function AddProducts() {
                                             </tr>
                                             <tr className="border border-[#3f3f3f]">
                                                 <td colSpan={3} className="px-2 sm:px-4 py-2 text-right text-[#ffffff] text-[12px] sm:text-[14px]">Incl + GST 18%</td>
-                                                <td className="px-2 sm:px-4 py-2 text-[12px] sm:text-[14px] font-normal font-semibold">INR {grandTotal}</td>
+                                                <td className="px-2 sm:px-4 py-2 text-[12px] sm:text-[14px] font-semibold">INR {grandTotal}</td>
                                             </tr>
                                         </>
                                     )}
