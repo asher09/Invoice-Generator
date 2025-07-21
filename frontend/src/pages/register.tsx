@@ -42,7 +42,7 @@ export function Register() {
     }
     
     return (
-        <div className="bg-[#141414] w-full h-screen overflow-hidden relative items-center">
+        <div className="bg-[#141414] w-full h-screen overflow-x-hidden relative items-center">
             <Navbar type={"Login"} onButtonClick={navButton} />
             <div className="absolute left-2/5 top-1/4 transform -translate-y-1/2 w-[300px] h-[300px] bg-[#90E163] opacity-30 blur-[120px] z-0"></div>
             <div className="absolute -left-1/10 -bottom-1/4 transform -translate-y-1/2  w-[300px] h-[300px] bg-[#90E163] opacity-43 blur-[120px] z-0"></div>

@@ -54,7 +54,7 @@ export function Login() {
     }
 
     return (
-        <div className="bg-[#141414] relative min-h-screen overflow-x-hidden">
+        <div className="bg-[#141414] relative h-screen overflow-x-hidden">
             <Navbar type={"Register"} onButtonClick={navButton} />
             <div className="absolute left-2/5 top-1/4 transform -translate-y-1/2 w-[350px] h-[350px] bg-[#90E163] opacity-30 blur-[120px] z-0"></div>
             <div className="absolute -left-1/10 -bottom-1/4 transform -translate-y-1/2  w-[350px] h-[350px] bg-[#90E163] opacity-43 blur-[120px] z-0"></div>
