@@ -60,7 +60,7 @@ export function Login() {
             <div className="absolute -left-1/10 -bottom-1/4 transform -translate-y-1/2  w-[350px] h-[350px] bg-[#90E163] opacity-43 blur-[120px] z-0"></div>
             <div className="absolute -right-1/12 top-1/3 transform -translate-y-1/2 w-[350px] h-[350px] bg-[#4F59A8] opacity-45 blur-[120px] z-0"></div>
 
-            <div className="flex justify-center items-center min-h-screen">
+            <div className="flex justify-center items-center min-h-screen z-10 relative">
                 <div className="flex flex-col md:flex-row justify-between w-full h-full from-[#141414] via-[#222c18] to-[#2c2c2c] overflow-hidden">
                     <div className="hidden md:flex md:w-1/2 h-full items-center justify-center">
                         <div className="relative w-[400px] lg:w-[700px] h-[600px] lg:h-[800px] overflow-hidden rounded-[30px]">                   
