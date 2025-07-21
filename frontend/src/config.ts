@@ -1,1 +1,1 @@
-export const BACKEND_URL="https://levitation-be.vercel.app/"
+export const BACKEND_URL="https://levitation-be.vercel.app"
