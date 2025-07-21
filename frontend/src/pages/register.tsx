@@ -13,8 +13,10 @@ export function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const sendRequest = async () => {
+        setLoading(true);
         try {
             const response = await axios.post(`${BACKEND_URL}/api/user/signup`, {
                 name,
@@ -30,6 +32,8 @@ export function Register() {
             navigate('/login')
         } catch (error) {
             console.error('Error during registration:', error);
+        } finally {
+            setLoading(false);
         }
     }
     
@@ -77,10 +81,10 @@ export function Register() {
                             linkText="Already have account ?"
                             linkHref="/login"
                             onButtonClick={sendRequest}
+                            loading={loading}
                         />
                     </div>
                     
-                    {/* Hide image on mobile, show on medium screens and up */}
                     <div className="hidden md:flex md:w-3/5 items-center justify-center pr-0 -mr-30">
                         <img src={login3} alt="Connecting People Billboard" className="w-[95%] h-[95%] object-cover border rounded-[60px]"/>
                     </div>

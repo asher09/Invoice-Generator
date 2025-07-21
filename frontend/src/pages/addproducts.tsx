@@ -64,13 +64,11 @@ export function AddProducts() {
         <div className="bg-[#141414] min-h-screen w-full overflow-x-hidden">
             <Navbar type={"Logout"} onButtonClick={navButton} />
             
-            {/* Background decorative element - responsive */}
             <div className="absolute left-1/4 sm:left-1/3 top-1 w-[250px] sm:w-[300px] lg:w-[350px] h-[250px] sm:h-[300px] lg:h-[350px] bg-[#4F59A8] opacity-45 blur-[80px] sm:blur-[100px] lg:blur-[120px] z-0"></div>
             
             <div className="flex justify-center w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-40 py-6 sm:py-8 md:py-12 lg:py-25">
                 <div className="flex flex-col justify-center items-start w-full max-w-7xl relative z-10">
                     
-                    {/* Header Section */}
                     <div className="w-full sm:w-[80%] md:w-[60%] lg:w-[40%] py-4 sm:py-5 mb-4 sm:mb-6">
                         <HeadingSection 
                             title="Add Products"
@@ -78,7 +76,6 @@ export function AddProducts() {
                         />
                     </div>
                     
-                    {/* Input Form Section */}
                     <div className="w-full mb-6 sm:mb-8">
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8">
                             <div className="w-full sm:w-1/3">
@@ -112,7 +109,6 @@ export function AddProducts() {
                             </div>
                         </div>
                         
-                        {/* Add Product Button */}
                         <div className="flex justify-center mt-6 sm:mt-8 lg:mt-10">
                             <ButtonWithLink
                                 buttonText="Add Product  +"
@@ -123,9 +119,9 @@ export function AddProducts() {
                         </div>
                     </div>
                     
-                    {/* Table Section */}
+                    {/*     Table Section    */}
                     <div className="w-full p-2 sm:p-4 lg:p-5">
-                        {/* Mobile Card View for small screens */}
+                        {/*    Mobile Card view   */}
                         <div className="block sm:hidden">
                             <h3 className="text-white text-lg font-semibold mb-4">Products</h3>
                             {products.map((p, idx) => (
@@ -141,7 +137,7 @@ export function AddProducts() {
                                 </div>
                             ))}
                             
-                            {/* Mobile Summary */}
+                            {/*        Mobile Summary       */}
                             {products.length > 0 && (
                                 <div className="bg-[#202020] border border-[#3F3F3F] rounded-lg p-4 mt-4">
                                     <div className="flex justify-between text-white mb-2">
@@ -156,7 +152,7 @@ export function AddProducts() {
                             )}
                         </div>
 
-                        {/* Desktop Table View */}
+                        {/*      Desktop Table View      */}
                         <div className="hidden sm:block overflow-x-auto">
                             <table className="min-w-full text-white rounded-lg overflow-hidden">
                                 <thead>
@@ -192,7 +188,6 @@ export function AddProducts() {
                             </table>
                         </div>
                         
-                        {/* Generate PDF Button */}
                         {products.length > 0 && (
                             <div className="flex justify-center mt-6 sm:mt-8 lg:mt-10">
                                 <button 

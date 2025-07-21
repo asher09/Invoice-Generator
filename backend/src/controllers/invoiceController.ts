@@ -5,7 +5,9 @@ import { AuthRequest } from '../middleware/auth';
  const { User } = require('../models/user');
 
 import { z } from 'zod';
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core'
+import chromium from '@sparticuz/chromium';
+
 
 const generateInvoiceInput = z.object({
   products: z.array(z.object({
@@ -94,7 +96,6 @@ export const getInvoices = async (req: AuthRequest, res: Response) => {
       const grandTotal = subtotal + totalGst;
 
       return {
-        _id: invoice._id,
         products: invoice.products,
         date: invoice.date,
         createdAt: invoice.createdAt,
@@ -119,9 +120,12 @@ export const getInvoices = async (req: AuthRequest, res: Response) => {
 };
 
 async function generateInvoicePDF(invoiceData: any): Promise<Buffer> {
+  const executablePath = await chromium.executablePath();
+  console.log("chromiume xectuablePath:", executablePath)
   const browser = await puppeteer.launch({
+    args: chromium.args,
+    executablePath,
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
   try {

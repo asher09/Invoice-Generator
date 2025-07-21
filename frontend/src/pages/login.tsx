@@ -15,6 +15,7 @@ export function Login() {
     const [images, setImages] = useState(0);
     const imagesArr = [login1, login2, login3];
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -27,6 +28,7 @@ export function Login() {
     const [password, setPassword] = useState('');
 
     const sendRequest = async () => {
+        setLoading(true);
         try {
             const response = await axios.post(`${BACKEND_URL}/api/user/signin`, {
                 email,
@@ -42,6 +44,8 @@ export function Login() {
             navigate('/addproducts');
         } catch (error) {
             console.error('Error during registration:', error);
+        } finally {
+            setLoading(false);
         }
     }
     
@@ -58,7 +62,6 @@ export function Login() {
 
             <div className="flex justify-center items-center min-h-screen">
                 <div className="flex flex-col md:flex-row justify-between w-full h-full from-[#141414] via-[#222c18] to-[#2c2c2c] overflow-hidden">
-                    {/* Hide image carousel on mobile, show on medium screens and up */}
                     <div className="hidden md:flex md:w-1/2 h-full items-center justify-center">
                         <div className="relative w-[400px] lg:w-[700px] h-[600px] lg:h-[800px] overflow-hidden rounded-[30px]">                   
                             <div className="flex transition-transform duration-700 h-full flex-center" 
@@ -75,7 +78,6 @@ export function Login() {
                         </div>
                     </div>
                     
-                    {/* Form section - full width on mobile, half on desktop */}
                     <div className="w-full md:w-1/2 flex flex-col px-4 sm:px-8 md:px-10 lg:pr-16 py-8 md:py-12">
                         <div className="flex gap-3 mb-6">
                             <Logo />
@@ -104,6 +106,7 @@ export function Login() {
                             linkText="Dont have an account?"
                             linkHref="/"
                             onButtonClick={sendRequest}
+                            loading={loading}
                         />
                     </div>
                 </div>
