@@ -50,7 +50,7 @@ export function Login() {
     }
     
     const navButton = () => {
-        navigate('/')
+        navigate('/register')
     }
 
     return (
@@ -108,7 +108,7 @@ export function Login() {
                         <ButtonWithLink
                             buttonText="Login"
                             linkText="Dont have an account?"
-                            linkHref="/"
+                            linkHref="/register"
                             onButtonClick={sendRequest}
                             loading={loading}
                         />
