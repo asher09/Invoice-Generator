@@ -119,11 +119,34 @@ export const getInvoices = async (req: AuthRequest, res: Response) => {
   }
 };
 
+async function resolveBrowserConfig(): Promise<{ executablePath: string; args: string[] }> {
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    const executablePath = await chromium.executablePath();
+    return { executablePath, args: chromium.args };
+  }
+
+  const candidates = [
+    process.env.CHROME_PATH,
+    'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+  ].filter(Boolean) as string[];
+
+  for (const candidate of candidates) {
+    try {
+      require('fs').accessSync(candidate);
+      return { executablePath: candidate, args: [] };
+    } catch {
+      // try next candidate
+    }
+  }
+
+  throw new Error('No local Chrome/Edge browser found. Set CHROME_PATH to your browser executable.');
+}
+
 async function generateInvoicePDF(invoiceData: any): Promise<Buffer> {
-  const executablePath = await chromium.executablePath();
-  console.log("chromiume xectuablePath:", executablePath)
+  const { executablePath, args } = await resolveBrowserConfig();
   const browser = await puppeteer.launch({
-    args: chromium.args,
+    args,
     executablePath,
     headless: true,
   });

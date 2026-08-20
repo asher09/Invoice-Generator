@@ -92,6 +92,8 @@ export function Login() {
                             subtitle="This email will be displayed with your inquiry"
                             value={email}
                             onChange={(e) => {setEmail(e.target.value)}}
+                            trailingText="demo"
+                            onTrailingClick={() => {setEmail('test@mail.com')}}
                         />
                         <LabelledInput
                             label="Current Password"
@@ -100,6 +102,8 @@ export function Login() {
                             type="password"
                             value={password}
                             onChange={(e) => {setPassword(e.target.value)}}
+                            trailingText="demo"
+                            onTrailingClick={() => {setPassword('test1234')}}
                         />
                         <ButtonWithLink
                             buttonText="Login"

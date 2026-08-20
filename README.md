@@ -60,6 +60,10 @@ Levitation is a full-stack web application that allows users to add products, ca
 
 
 
+## Video Demo
+
+Watch the demo video: [Levitation Invoice Generator - YouTube](https://youtu.be/aobOUGsg3U0)
+
 ---
 
 **Levitation** — Modern, automated invoice generation made
